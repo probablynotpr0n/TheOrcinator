@@ -1,2 +1,2 @@
 # TheOrcinator
-A program that tracks 5e stats
+This is a program that tracks 5e stats

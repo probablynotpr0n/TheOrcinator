@@ -5,9 +5,9 @@
 package com.github.WinterfreshWill.TheOrcinator;
 
 public class Settings {
-	public static final String sVersion_d = "0.0";
-	public static final int iWindowSizeX_d = 300;
-	public static final int iWindowSizeY_d = 200;
+	private static final String sVersion_d = "0.0";
+	private static final int iWindowSizeX_d = 1000;
+	private static final int iWindowSizeY_d = 800;
 	
 	public String sVersion;
 	public int iWindowSizeX;

@@ -30,9 +30,16 @@ public class MonsterInfo {
 	
 	// Adds the default directory to the monster path, and complains if it's missing
 	private void init() {
-		File def = new File(defaultPath);
-		if(!def.isDirectory() || !def.canRead()) {
+		if(!isInitialized) { //only want to do this once
+			File def = new File(defaultPath);
+			if(!def.isDirectory() || !def.canRead()) {
+				monsterPath.add(def);
+			} else {
+				// just leave blank. popup notification?
+				//TODO add popup telling that no monster directory found, no monsters will be available
+			}
 			
+			isInitialized = true;
 		}
 	}
 	
@@ -45,7 +52,7 @@ public class MonsterInfo {
 		//TODO add minfo path, including inside jar (if possible) as first location
 	}
 	public void parseFile(String filename) {
-		//TODO parse a file containing monster info, yaml perhaps?
+		//TODO parse a file containing monster info, xml format
 	}
 	
 	// Access functions

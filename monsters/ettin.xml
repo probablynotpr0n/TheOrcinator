@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- If a value is blank or not there, program assumes it to be zero -->
+<monster>
+	<name>Ettin</name>
+	<alignment>Chaotic Evil</alignment>
+	<size>Large</size>
+	<type>Giant</type>
+	
+	<challenge>
+		<rating>4</rating>
+		<xp>1100</xp>
+	</challenge>
+	
+	<health>
+		<average>85</average>
+		<die>10</die>
+		<dice>10</dice>
+		<bonus>30</bonus>
+	</health>
+	
+	<armor>
+		<ac>12</ac>
+		<type>Natural</type>
+	</armor>
+	
+	<movement>
+		<speed>40</speed>
+	</movement>
+	
+	<attributes>
+		<strength>
+			<score>21</score>
+			<modifier>5</modifier>
+		</strength>
+		<dexterity>
+			<score>8</score>
+			<modifier>-1</modifier>
+		</dexterity>
+		<constitution>
+			<score>17</score>
+			<modifier>3</modifier>
+		</constitution>
+		<intelligence>
+			<score>6</score>
+			<modifier>-2</modifier>
+		</intelligence>
+		<wisdom>
+			<score>10</score>
+			<modifier>0</modifier>
+		</wisdom>
+		<charisma>
+			<score>8</score>
+			<modifier>-1</modifier>
+		</charisma>
+	</attributes>
+	
+	<skills>
+		<perception>4</perception>
+	</skills>
+	
+	<senses> <!-- NOTE: Perception stored here is passive -->
+		<sense>
+			<name>Darkvision</name>
+			<range>60</range>
+		</sense>
+		<sense>
+			<name>Perception</name>
+			<range>-1</range>
+			<passive>14</passive>
+	</senses>
+	
+	<languages>
+		<language>Giant</language>
+		<language>Orc</language>
+	</languages>
+	
+	<qualities>
+		<quality>
+			<name>Two Heads</name>
+			<text>The ettin has advantage on Wisdom(Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious.</text>
+		</quality>
+		<quality>
+			<name>Wakeful</name>
+			<text>When one of the ettin's heads is asleep, the other is awake.</text>
+		</quality>
+	</qualities>
+	
+	<actions>
+		<action>
+			<name>Multiattack</name>
+			<text>The ettin makes one Battleaxe and one Morningstar attack.</text>
+		</action>
+		<action>
+			<name>Battleaxe</name>
+			<type>Melee Weapon Attack</type>
+			<range>5</range>
+			<targets>1</targets>
+			<attackBonus>7</attackBonus>
+			<damage>
+				<average>14</average>
+				<die>8</die> <!-- how many sides on the die -->
+				<dice>2</dice> <!-- how many dice -->
+				<bonus>5</bonus> <!-- damage bonus -->
+				<type>slashing</type>
+			</damage>
+		</action>
+		<action>
+			<name>Morningstar</name>
+			<type>Melee Weapon Attack</type>
+			<range>5</range>
+			<targets>1</targets>
+			<attackBonus>7</attackBonus>
+			<damage>
+				<average>14</average>
+				<dice>2</dice>
+				<die>8</die>
+				<bonus>5</bonus>
+				<type>piercing</type>
+			</damage>
+		</action>
+	</actions>
+</monster>

@@ -8,22 +8,19 @@
 package com.github.WinterfreshWill.TheOrcinator;
 
 import java.util.ArrayList;
-
+import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import org.w3c.dom.Document;
-//import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-//import org.w3c.dom.NodeList;
 import org.w3c.dom.traversal.NodeFilter;
 import org.w3c.dom.traversal.DocumentTraversal;
 import org.w3c.dom.traversal.TreeWalker;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class MonsterInfo {
+	private static final Logger LOGGER = Logger.getLogger(MonsterInfo.class.getCanonicalName());
 	/** Default location for the program to look for monster files */
 	private static final String defaultPath = "monsters/";
 	/** All locations program will look for monster files */
@@ -56,9 +53,14 @@ public class MonsterInfo {
 	 *  @throws FileNotFoundException If the empty.xml file can't be found or doesn't exist
 	 *  @see findFile
 	 */
-	public MonsterInfo() throws FileNotFoundException {
-		monsterFile = findFile("empty");
-		monsterDoc = parseFile(monsterFile);
+	public MonsterInfo() {
+		try {
+			monsterFile = findFile("empty");
+			monsterDoc = parseFile(monsterFile);
+		} catch(FileNotFoundException e) {
+			LOGGER.severe("empty.xml file can't be found or does not exist");
+			LOGGER.severe(e.getMessage());
+		}
 	}
 	/** Creates an instance of MonsterInfo with existing fields set according to file.
 	 * If a field was not present, it will be set to null or its numerical minimum value
@@ -67,9 +69,22 @@ public class MonsterInfo {
 	 * @throws FileNotFoundException If the &lt;name&gt;.xml could not be found or doesn't exist
 	 * @see findFile
 	 */
-	public MonsterInfo(String mon) throws FileNotFoundException {
-		monsterFile = findFile(mon);
-		monsterDoc = parseFile(monsterFile);
+	public MonsterInfo(String mon) {
+		try {
+			monsterFile = findFile(mon);
+			monsterDoc = parseFile(monsterFile);
+		} catch(FileNotFoundException e) {
+			LOGGER.info(e.getMessage());
+			LOGGER.info(new StringBuilder(mon.toLowerCase()).append(".xml could not be found or ").
+					append("doesn't exist, attempting to use empty.xml").toString());
+			try {
+				monsterFile = findFile("empty");
+				monsterDoc = parseFile(monsterFile);
+			} catch(FileNotFoundException f) {
+				LOGGER.severe("empty.xml file can't be found or does not exist");
+				LOGGER.severe(f.getMessage());
+			}
+		}
 	}
 	
 	/** Navigates the DOM until it finds the node we're looking for
@@ -100,7 +115,7 @@ public class MonsterInfo {
 				for(int j = 0; j < i; j++) {
 					error.append("->").append(nodes[j]);
 				}
-				System.err.printf(error.append("%n").toString(), nodes[i]);
+				LOGGER.info(String.format(error.append("%n").toString(), nodes[i]));
 				return null;
 			}
 			
@@ -111,7 +126,7 @@ public class MonsterInfo {
 			}
 		}
 		// code should never execute this far, but we've gotta satisfy the compiler
-		System.err.printf("[MAYDAY] I HAVE MADE A GRAVE MISTAKE%n");
+		LOGGER.severe("This should never happen");
 		Thread.dumpStack();
 		return null;
 	}
@@ -153,7 +168,7 @@ public class MonsterInfo {
 		}
 		
 		// code should never execute this far, but we've gotta satisfy the compiler
-			System.err.printf("[MAYDAY] I HAVE MADE A GRAVE MISTAKE%n");
+			LOGGER.severe("This should never happen");
 			Thread.dumpStack();
 			return null;
 	}
@@ -169,10 +184,9 @@ public class MonsterInfo {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			return builder.parse(file);
 		} catch(Exception e) {
-			System.err.printf("[ERROR] Specified file could not be parsed.%n");
-			e.printStackTrace();
+			LOGGER.info(new StringBuilder("File ").append(file.getName()).append(" could not be parsed").toString());
+			LOGGER.info(e.getMessage());
 		}
-		
 		return null;
 	}
 	
@@ -222,8 +236,8 @@ public class MonsterInfo {
 		try {
 			return Integer.parseInt(n.getTextContent());
 		} catch(NumberFormatException e) {
-			System.err.printf("[ERROR] Could not parse ac as an integer.%n");
-			e.printStackTrace();
+			LOGGER.warning("Could not parse ac as an integer");
+			LOGGER.warning(e.getMessage());
 		}
 		return Integer.MIN_VALUE;
 	}
@@ -250,8 +264,8 @@ public class MonsterInfo {
 		try {
 			return Integer.parseInt(n.getTextContent());
 		} catch(NumberFormatException e) {
-			System.err.printf("[ERROR] Could not parse average as an integer");
-			e.printStackTrace();
+			LOGGER.warning("Could not parse average as an integer");
+			LOGGER.warning(e.getMessage());
 		}
 		return Integer.MIN_VALUE;
 	}

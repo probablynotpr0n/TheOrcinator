@@ -1,3 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <monster>
+	<name></name>
+	<alignment></alignment>
+	<size></size>
+	<type></type>
+	
+	<challenge>
+		<rating></rating>
+		<xp></xp>
+	</challenge>
+	
+	<health>
+		<average></average>
+		<die></die>
+		<dice></dice>
+		<bonus></bonus>
+		<bonus></bonus>
+	</health>
+	
+	<armor>
+		<ac></ac>
+		<type></type>
+	</armor>
+	
+	<movement>
+		<speed></speed>
+		<fly></fly>
+		<swim></swim>
+		<climb></climb>
+		<burrow></burrow>
+	</movement>
+	
+	<attributes>
+			<attribute>
+				<name></name>
+				<score></score>
+				<modifier></modifier>
+			</attribute>
+	</attributes>
+	
+	<skills>
+		<skill>
+			<name></name>
+			<score></score>
+		</skill>
+	</skills>
+	
+	<senses>
+		<sense>
+			<name></name>
+			<range></range>
+			<score></score>
+		</sense>
+	</senses>
+	
+	<languages>
+		<language></language>
+	</Languages>
+	
+	<qualities>
+		<quality>
+			<name></name>
+			<text></text>
+		</quality>
+	</qualities>
+	
+	<actions>
+		<action>
+			<name></name>
+			<text></text>
+			<damage>
+				<average></average>
+				<die></die>
+				<dice></dice>
+				<bonus></bonus>
+				<type></type>
+			</damage>
+		</action>
+	</actions>
 </monster>

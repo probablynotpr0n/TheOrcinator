@@ -28,34 +28,43 @@
 	</movement>
 	
 	<attributes>
-		<strength>
+		<attribute>
+			<name>Strength</name>
 			<score>21</score>
 			<modifier>5</modifier>
-		</strength>
-		<dexterity>
+		</attribute>
+		<attribute>
+			<name>Dexterity</name>
 			<score>8</score>
 			<modifier>-1</modifier>
-		</dexterity>
-		<constitution>
+		</attribute>
+		<attribute>
+			<name>Constitution</name>
 			<score>17</score>
 			<modifier>3</modifier>
-		</constitution>
-		<intelligence>
+		</attribute>
+		<attribute>
+			<name>Intelligence</name>
 			<score>6</score>
 			<modifier>-2</modifier>
-		</intelligence>
-		<wisdom>
+		</attribute>
+		<attribute>
+			<name>Wisdom</name>
 			<score>10</score>
 			<modifier>0</modifier>
-		</wisdom>
-		<charisma>
+		</attribute>
+		<attribute>
+			<name>Charisma</name>
 			<score>8</score>
 			<modifier>-1</modifier>
-		</charisma>
+		</attribute>
 	</attributes>
 	
 	<skills>
-		<perception>4</perception>
+		<skill>
+			<name>Perception</name>
+			<score>4</score>
+		</skill>
 	</skills>
 	
 	<senses> <!-- NOTE: Perception stored here is passive -->
@@ -95,7 +104,9 @@
 			<type>Melee Weapon Attack</type>
 			<range>5</range>
 			<targets>1</targets>
-			<attackBonus>7</attackBonus>
+			<attack>
+				<bonus>7</bonus>
+			</attack>
 			<damage>
 				<average>14</average>
 				<die>8</die> <!-- how many sides on the die -->

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- If a value is blank or not there, program assumes it to be its minimum numerical value -->
+<!-- If a value is blank or not there, program assumes it to be its minimum numerical value or null -->
 <monster>
 	<name>Ettin</name>
 	<alignment>Chaotic Evil</alignment>
